@@ -2,7 +2,7 @@ services:
   - type: web
     name: nexus-ecommerce
     env: node
-    plan: free # Change to 'starter' if you need a persistent disk
+    plan: free
     buildCommand: npm install
     startCommand: node scripts/initDb.js && node scripts/seedData.js && npm start
     envVars:
@@ -13,8 +13,4 @@ services:
       - key: JWT_EXPIRE
         value: 7d
       - key: DATABASE_URL
-        value: /var/data/ecommerce.db
-    disk:
-      name: data
-      mountPath: /var/data
-      sizeGB: 1
+        value: ./database/ecommerce.db
