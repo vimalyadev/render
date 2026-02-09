@@ -1,15 +1,13 @@
 services:
   - type: web
-    name: nexus-ecommerce-v1
+    name: nexus-ecommerce-live
     env: node
     plan: free
     region: ohio
     buildCommand: npm install
-    startCommand: node scripts/initDb.js && node scripts/seedData.js && npm start
+    startCommand: node server.js
     envVars:
       - key: NODE_ENV
         value: production
       - key: JWT_SECRET
         generateValue: true
-      - key: DB_PROD_PATH
-        value: ./database/ecommerce.db
